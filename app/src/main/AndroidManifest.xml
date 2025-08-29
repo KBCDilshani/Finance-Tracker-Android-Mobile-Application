@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.fintrack">
+
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".FintrackApp"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="FinTrack"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ImiliPocket"
+        tools:targetApi="31">
+
+    <!-- Main Activity -->
+    <activity
+        android:name=".ui.onboarding.OnboardingActivity"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+
+    <activity android:name=".ui.passcode.PasscodeActivity" />
+    <activity android:name=".ui.dashboard.DashboardActivity" />
+
+    <!-- Broadcast Receiver -->
+    <receiver
+        android:name=".receiver.DailyReminderReceiver"
+        android:enabled="true"
+        android:exported="false" />
+
+    <!-- Background Service -->
+    <service
+        android:name=".service.BudgetNotificationService"
+        android:enabled="true"
+        android:exported="false" />
+</application>
+
+    </manifest>
